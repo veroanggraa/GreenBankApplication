@@ -1,4 +1,7 @@
 package com.veroanggra.greenbankapplication.component
 
-class SavingCard {
+import androidx.compose.runtime.Composable
+
+@Composable
+fun SavingCard() {
 }
