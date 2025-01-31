@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace = "com.veroanggra.greenbankapplication"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.veroanggra.greenbankapplication"
