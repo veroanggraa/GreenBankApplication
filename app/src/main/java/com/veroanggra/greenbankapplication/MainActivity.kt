@@ -9,6 +9,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.veroanggra.greenbankapplication.ui.theme.GreenBankApplicationTheme
 import com.veroanggra.greenbankapplication.utils.actions.setClipboard
+import com.veroanggra.greenbankapplication.utils.actions.showCopiedToast
 import com.veroanggra.greenbankapplication.utils.component.SavingCard
 
 class MainActivity : ComponentActivity() {
@@ -17,10 +18,15 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             GreenBankApplicationTheme {
+                val text = "9876543210"
                 SavingCard(
                     modifier = Modifier.padding(horizontal = 30.dp, vertical = 60.dp),
+                    textNumber = text,
                     onClick = {
-                        this.setClipboard("label", "text")
+                        this.apply {
+                            setClipboard("Copied", text)
+                            showCopiedToast("Account Number Copied", this)
+                        }
                     })
             }
         }

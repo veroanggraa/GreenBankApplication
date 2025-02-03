@@ -2,11 +2,13 @@ package com.veroanggra.greenbankapplication.utils.component
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.magnifier
+import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
@@ -21,7 +23,7 @@ fun AccountNameNumberTextCopy(
     textName: String,
     textNumber: String,
     onClick: () -> Unit,
-    modifier: Modifier
+    modifier: Modifier = Modifier
 ) {
     Row(modifier = modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
         Row(modifier = Modifier.padding(top = 15.dp, start = 20.dp)) {
@@ -48,6 +50,21 @@ fun AccountNameNumberTextCopy(
             )
         }
         CopyButton(onClick = onClick)
+    }
+}
+
+@Composable
+fun BalanceText(modifier: Modifier = Modifier, balance: String, isVisible: Boolean) {
+    Row(modifier = modifier, verticalAlignment = Alignment.CenterVertically) {
+        Text(
+            text = if (isVisible) "RP $balance" else "RP ********", style = TextStyle(
+                fontSize = 18.sp,
+                fontWeight = FontWeight.Bold,
+                color = Color(0xFF212821)
+            )
+        )
+        Spacer(modifier = modifier.width(5.dp))
+        EyeIconButton(onClick = {}, modifier = Modifier, isVisible = isVisible)
     }
 }
 
