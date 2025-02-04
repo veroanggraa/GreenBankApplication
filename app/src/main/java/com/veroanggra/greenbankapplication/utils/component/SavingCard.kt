@@ -16,7 +16,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun SavingCard(modifier: Modifier, onClick: () -> Unit, textNumber: String) {
+fun SavingCard(modifier: Modifier, onClick: () -> Unit, textNumber: String, balance: String, textName: String) {
     Card(
         modifier = modifier.size(width = 320.dp, height = 200.dp),
         colors = CardDefaults.cardColors(containerColor = Color(0xFFF3F4F6))
@@ -24,12 +24,12 @@ fun SavingCard(modifier: Modifier, onClick: () -> Unit, textNumber: String) {
         Column(verticalArrangement = Arrangement.SpaceBetween) {
             AccountNameNumberTextCopy(
                 modifier = Modifier,
-                textName = "greenSaving",
+                textName = textName,
                 textNumber = textNumber,
                 onClick = onClick
             )
             BalanceText(
-                balance = "10.000",
+                balance = balance,
                 modifier = Modifier.padding(start = 20.dp, top = 20.dp),
                 isVisible = false
             )
@@ -45,5 +45,5 @@ fun SavingCard(modifier: Modifier, onClick: () -> Unit, textNumber: String) {
 @Preview
 @Composable
 private fun PreViewCard() {
-    SavingCard(modifier = Modifier, textNumber = "0291938237", onClick = {})
+    SavingCard(modifier = Modifier, textNumber = "0291938237", textName = "greenSaving", balance = "1.000.000", onClick = {})
 }

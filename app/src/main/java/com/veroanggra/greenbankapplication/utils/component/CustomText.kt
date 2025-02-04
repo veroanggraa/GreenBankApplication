@@ -19,13 +19,11 @@ import androidx.compose.ui.unit.sp
 
 
 @Composable
-fun AccountNameNumberTextCopy(
+fun AccountNameNumberText(
     textName: String,
     textNumber: String,
-    onClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
-    Row(modifier = modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
         Row(modifier = Modifier.padding(top = 15.dp, start = 20.dp)) {
             Text(
                 text = textName, style = TextStyle(
@@ -49,6 +47,17 @@ fun AccountNameNumberTextCopy(
                 )
             )
         }
+}
+
+@Composable
+fun AccountNameNumberTextCopy(
+    textName: String,
+    textNumber: String,
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier
+) {
+    Row(modifier = modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
+        AccountNameNumberText(textName = textName, textNumber = textNumber, modifier = Modifier)
         CopyButton(onClick = onClick)
     }
 }

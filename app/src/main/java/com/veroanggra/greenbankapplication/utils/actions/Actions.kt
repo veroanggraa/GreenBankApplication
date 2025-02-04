@@ -13,7 +13,3 @@ fun Context.setClipboard(label: String, text: String) {
         )
     )
 }
-
-fun Context.showCopiedToast(message: String, context: Context) {
-    Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
-}
