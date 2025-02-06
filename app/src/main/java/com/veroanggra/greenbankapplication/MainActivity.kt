@@ -13,7 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.veroanggra.greenbankapplication.ui.theme.GreenBankApplicationTheme
 import com.veroanggra.greenbankapplication.utils.actions.setClipboard
-import com.veroanggra.greenbankapplication.utils.component.CustomTopToastCompose
+import com.veroanggra.greenbankapplication.utils.component.CustomOnTopToast
 import com.veroanggra.greenbankapplication.utils.component.SavingCard
 
 class MainActivity : ComponentActivity() {
@@ -40,7 +40,7 @@ class MainActivity : ComponentActivity() {
                         }
                     })
                 if (isShowMessage) {
-                    CustomTopToastCompose(
+                    CustomOnTopToast(
                         message = message,
                         onDismiss = { isShowMessage = false }
                     )

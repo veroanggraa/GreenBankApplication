@@ -24,7 +24,7 @@ fun AccountNameNumberText(
     textNumber: String,
     modifier: Modifier = Modifier
 ) {
-        Row(modifier = Modifier.padding(top = 15.dp, start = 20.dp)) {
+        Row(modifier = modifier.padding(top = 15.dp, start = 20.dp)) {
             Text(
                 text = textName, style = TextStyle(
                     fontSize = 15.sp,

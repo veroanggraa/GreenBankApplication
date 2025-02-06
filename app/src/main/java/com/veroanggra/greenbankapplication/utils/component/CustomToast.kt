@@ -26,7 +26,7 @@ import androidx.compose.ui.unit.sp
 import kotlinx.coroutines.delay
 
 @Composable
-fun CustomTopToastCompose(
+fun CustomOnTopToast(
     message: String,
     modifier: Modifier = Modifier,
     backgroundColor: Color = Color(0xFF399918),
