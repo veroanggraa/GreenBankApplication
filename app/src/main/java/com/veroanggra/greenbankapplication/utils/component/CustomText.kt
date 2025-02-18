@@ -76,7 +76,7 @@ fun BalanceText(
     isVisible: Boolean,
     eyeClick: () -> Unit,
     style: TextStyle = TextStyle(
-        fontSize = 18.sp,
+        fontSize = 20.sp,
         fontWeight = FontWeight.Bold,
         color = Color(0xFF212821)
     )
