@@ -16,7 +16,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun SavingCard(modifier: Modifier, onClick: () -> Unit, textNumber: String, balance: String, textName: String) {
+fun SavingCard(modifier: Modifier, onClick: () -> Unit, textNumber: String, balance: String, textName: String, eyeClick: () -> Unit, isVisible: Boolean) {
     Card(
         modifier = modifier.size(width = 320.dp, height = 200.dp),
         colors = CardDefaults.cardColors(containerColor = Color(0xFFF3F4F6))
@@ -31,7 +31,8 @@ fun SavingCard(modifier: Modifier, onClick: () -> Unit, textNumber: String, bala
             BalanceText(
                 balance = balance,
                 modifier = Modifier.padding(start = 20.dp, top = 20.dp),
-                isVisible = false
+                isVisible = isVisible,
+                eyeClick = eyeClick
             )
             Row(modifier = Modifier.padding(start = 20.dp, top = 20.dp)) {
                 CommonButton(onClick = {}, modifier = Modifier, label = "Pindah Dana")
@@ -40,10 +41,4 @@ fun SavingCard(modifier: Modifier, onClick: () -> Unit, textNumber: String, bala
             }
         }
     }
-}
-
-@Preview
-@Composable
-private fun PreViewCard() {
-    SavingCard(modifier = Modifier, textNumber = "0291938237", textName = "greenSaving", balance = "1.000.000", onClick = {})
 }
