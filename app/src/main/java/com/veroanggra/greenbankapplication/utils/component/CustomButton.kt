@@ -48,7 +48,7 @@ fun EyeIconButton(onClick: () -> Unit, modifier: Modifier = Modifier, isVisible:
             .background(color = Color(0XFFECEDF1))
     ) {
         Icon(
-            painter = painterResource(if (isVisible) R.drawable.icon_unhide else R.drawable.icon_hide),
+            painter = painterResource(if (isVisible) R.drawable.icon_hide else R.drawable.icon_unhide),
             contentDescription = "Eye",
             modifier = Modifier.size(30.dp)
         )
