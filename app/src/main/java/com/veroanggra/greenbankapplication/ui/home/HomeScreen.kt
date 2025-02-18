@@ -1,6 +1,9 @@
 import android.content.Context
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
@@ -16,6 +19,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.veroanggra.greenbankapplication.utils.actions.setClipboard
 import com.veroanggra.greenbankapplication.utils.component.CustomOnTopToast
+import com.veroanggra.greenbankapplication.utils.component.CustomTabSample
 import com.veroanggra.greenbankapplication.utils.component.GrayLine
 import com.veroanggra.greenbankapplication.utils.component.SavingCard
 import com.veroanggra.greenbankapplication.utils.helper.BankingDataStore
@@ -27,7 +31,7 @@ fun HomeScreen(
 ) {
     val textNumber = "9876543210"
     val textName = "greenSaving"
-    val balance = "1.000.000.000.000.000.000"
+    val balance = "1.000.000.000"
     var isShowMessage by remember { mutableStateOf(false) }
     var message by remember { mutableStateOf("") }
     val isVisibleFlow = BankingDataStore.getIsVisible(context)
@@ -35,13 +39,19 @@ fun HomeScreen(
     val coroutineScope = rememberCoroutineScope()
 
     Scaffold(
+        modifier = Modifier
+            .fillMaxSize()
     ) { innerPadding ->
         Column(
             modifier = Modifier
+                .fillMaxSize()
+                .background(Color.White)
                 .padding(innerPadding)
         ) {
             Spacer(modifier = Modifier.height(50.dp))
-            GrayLine(Modifier, Color(0xFFF3F4F6), 5f)
+            CustomTabSample()
+            Spacer(modifier = Modifier.height(1.dp))
+            GrayLine(Modifier, Color(0xFFF3F4F6), 10f)
             Spacer(modifier = Modifier.height(10.dp))
             SavingCard(
                 modifier = Modifier.padding(horizontal = 30.dp, vertical = 20.dp),
