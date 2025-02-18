@@ -1,24 +1,11 @@
 package com.veroanggra.greenbankapplication
 
+import HomeScreen
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.padding
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
-import androidx.compose.runtime.setValue
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
 import com.veroanggra.greenbankapplication.ui.theme.GreenBankApplicationTheme
-import com.veroanggra.greenbankapplication.utils.actions.setClipboard
-import com.veroanggra.greenbankapplication.utils.component.CustomOnTopToast
-import com.veroanggra.greenbankapplication.utils.component.SavingCard
-import com.veroanggra.greenbankapplication.utils.helper.BankingDataStore
-import kotlinx.coroutines.launch
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,39 +13,36 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             GreenBankApplicationTheme {
-                val textNumber = "9876543210"
-                val textName = "greenSaving"
-                val balance = "1.000.000.000.000.000.000"
-                var isShowMessage by remember { mutableStateOf(false) }
-                var message by remember { mutableStateOf("") }
-                val isVisibleFlow = BankingDataStore.getIsVisible(this)
-                val isVisible by isVisibleFlow.collectAsState(initial = true)
-                val coroutineScope = rememberCoroutineScope()
+                HomeScreen(this)
 
-                SavingCard(
-                    modifier = Modifier.padding(horizontal = 30.dp, vertical = 60.dp),
-                    textNumber = textNumber,
-                    textName = textName,
-                    balance = balance,
-                    onClick = {
-                        this.apply {
-                            setClipboard("Account Number", textNumber)
-                            isShowMessage = true
-                            message = "Berhasil di-Copy!"
-                        }
-                    },
-                    isVisible = isVisible,
-                    eyeClick = {
-                        coroutineScope.launch {
-                            BankingDataStore.saveIsVisible(this@MainActivity, !isVisible)
-                        }
-                    })
-                if (isShowMessage) {
-                    CustomOnTopToast(
-                        message = message,
-                        onDismiss = { isShowMessage = false }
-                    )
-                }
+//                Column {
+//                    GrayLine(Modifier, Color(0xFFF3F4F6), 50f)
+//                    Spacer(modifier = Modifier.height(20.dp))
+//                    SavingCard(
+//                        modifier = Modifier.padding(horizontal = 30.dp, vertical = 60.dp),
+//                        textNumber = textNumber,
+//                        textName = textName,
+//                        balance = balance,
+//                        onClick = {
+//                            this.apply {
+//                                setClipboard("Account Number", textNumber)
+//                                isShowMessage = true
+//                                message = "Berhasil di-Copy!"
+//                            }
+//                        },
+//                        isVisible = isVisible,
+//                        eyeClick = {
+//                            coroutineScope.launch {
+//                                BankingDataStore.saveIsVisible(this@MainActivity, !isVisible)
+//                            }
+//                        })
+//                }
+//                if (isShowMessage) {
+//                    CustomOnTopToast(
+//                        message = message,
+//                        onDismiss = { isShowMessage = false }
+//                    )
+//                }
             }
         }
     }
