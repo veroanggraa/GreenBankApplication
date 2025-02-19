@@ -20,7 +20,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -31,39 +30,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun CustomTabSample() {
-    val (selected, setSelected) = remember {
-        mutableIntStateOf(0)
-    }
-
-    CustomTab(
-        items = listOf("Akun", "Kartu"),
-        selectedItemIndex = selected,
-        onClick = setSelected,
-    )
-}
-
-
-@Composable
-private fun MyTabIndicator(
-    indicatorOffset: Dp,
-    indicatorColor: Color,
-) {
-    Box(
-        modifier = Modifier
-            .width(70.dp)
-            .height(3.dp)
-            .offset(
-                x = indicatorOffset,
-            )
-            .background(
-                color = indicatorColor,
-            ),
-    )
-}
-
-@Composable
-private fun MyTabItem(
+private fun CustomTabItem(
     isSelected: Boolean,
     onClick: () -> Unit,
     tabWidth: Dp,
@@ -96,6 +63,25 @@ private fun MyTabItem(
     )
 }
 
+
+@Composable
+private fun CustomTabIndicator(
+    indicatorOffset: Dp,
+    indicatorColor: Color,
+) {
+    Box(
+        modifier = Modifier
+            .width(70.dp)
+            .height(3.dp)
+            .offset(
+                x = indicatorOffset,
+            )
+            .background(
+                color = indicatorColor,
+            ),
+    )
+}
+
 @Composable
 fun CustomTab(
     selectedItemIndex: Int,
@@ -119,7 +105,7 @@ fun CustomTab(
         ) {
             items.mapIndexed { index, text ->
                 val isSelected = index == selectedItemIndex
-                MyTabItem(
+                CustomTabItem(
                     isSelected = isSelected,
                     onClick = {
                         onClick(index)
@@ -129,7 +115,7 @@ fun CustomTab(
                 )
             }
         }
-        MyTabIndicator(
+        CustomTabIndicator(
             indicatorOffset = indicatorOffset,
             indicatorColor = Color(0xff399918),
         )

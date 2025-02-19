@@ -1,6 +1,5 @@
 import android.content.Context
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -10,6 +9,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
@@ -19,7 +19,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.veroanggra.greenbankapplication.utils.actions.setClipboard
 import com.veroanggra.greenbankapplication.utils.component.CustomOnTopToast
-import com.veroanggra.greenbankapplication.utils.component.CustomTabSample
+import com.veroanggra.greenbankapplication.utils.component.CustomTab
 import com.veroanggra.greenbankapplication.utils.component.GrayLine
 import com.veroanggra.greenbankapplication.utils.component.SavingCard
 import com.veroanggra.greenbankapplication.utils.helper.BankingDataStore
@@ -42,14 +42,21 @@ fun HomeScreen(
         modifier = Modifier
             .fillMaxSize()
     ) { innerPadding ->
+        Spacer(modifier = Modifier.height(50.dp))
+        val (selected, setSelected) = remember {
+            mutableIntStateOf(0)
+        }
         Column(
             modifier = Modifier
                 .fillMaxSize()
                 .background(Color.White)
                 .padding(innerPadding)
         ) {
-            Spacer(modifier = Modifier.height(50.dp))
-            CustomTabSample()
+            CustomTab(
+                items = listOf("Akun", "Kartu"),
+                selectedItemIndex = selected,
+                onClick = setSelected,
+            )
             Spacer(modifier = Modifier.height(1.dp))
             GrayLine(Modifier, Color(0xFFF3F4F6), 10f)
             Spacer(modifier = Modifier.height(10.dp))
