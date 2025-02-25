@@ -19,6 +19,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.veroanggra.greenbankapplication.R
@@ -69,6 +70,22 @@ fun CommonButton(onClick: () -> Unit, modifier: Modifier = Modifier, label: Stri
                 fontWeight = FontWeight.Bold,
                 color = Color(0xFF212821)
             )
+        )
+    }
+}
+
+@Composable
+fun CircleButton(onClick: () -> Unit, modifier: Modifier = Modifier, iconImage: Int, sizeImage: Dp) {
+    IconButton(
+        onClick = onClick,
+        modifier
+            .clip(CircleShape)
+            .background(color = Color(0XFFECEDF1))
+    ) {
+        Icon(
+            painter = painterResource(iconImage),
+            contentDescription = "Icon",
+            modifier = Modifier.size(sizeImage)
         )
     }
 }
