@@ -1,10 +1,11 @@
 package com.veroanggra.greenbankapplication
 
-import HomeScreen
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.ui.Modifier
+import com.veroanggra.greenbankapplication.ui.main_tab.MainTabScreen
 import com.veroanggra.greenbankapplication.ui.theme.GreenBankApplicationTheme
 
 class MainActivity : ComponentActivity() {
@@ -13,7 +14,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             GreenBankApplicationTheme {
-                HomeScreen(this)
+                MainTabScreen(modifier = Modifier, context = this)
             }
         }
     }
